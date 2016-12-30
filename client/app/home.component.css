@@ -1,0 +1,19 @@
+.navbar{
+  border-radius:0;
+}
+.searchbar{
+  width: 70%;
+  margin-right: 10%;
+  margin-top: 0.5%;
+}
+
+.container{
+  width:50%;
+}
+.form-control{
+  width: 80%;
+}
+
+.logo{
+  width:10%;
+}

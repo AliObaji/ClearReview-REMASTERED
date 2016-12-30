@@ -9,18 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.name = 'Angular';
+var HomeComponent = (function () {
+    function HomeComponent() {
+        this.logo = "../app/assets/Images/Logo/Logo_Clear_478x141.png";
+        this.name = "Clear Review";
+        this.description = "We provide a platform to help students make sure they make the correct decisions when registering" +
+            " their courses. Students will be able to review and lookup the ratings of courses and professors.";
     }
-    AppComponent = __decorate([
+    HomeComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-app',
-            template: "<h1>Hello {{name}}</h1>",
+            templateUrl: 'home.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], HomeComponent);
+    return HomeComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=app.component.js.map

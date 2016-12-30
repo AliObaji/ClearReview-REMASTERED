@@ -7,8 +7,8 @@ import {course} from '../../objects/course';
 @Component({
   moduleId: module.id,
   selector: 'catalogue',
-  templateUrl: 'course-catalogue.component.html'
-
+  templateUrl: 'course-catalogue.component.html',
+  styleUrls: ['course-catalogue.component.css']
 })
 export class courseCatalogue{
   courses: course[];

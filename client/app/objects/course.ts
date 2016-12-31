@@ -7,5 +7,4 @@ export class course{
   title: string;
   name: string;
   number: number;
-  semester: string;
 }

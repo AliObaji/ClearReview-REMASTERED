@@ -1,3 +1,16 @@
+<!--Modal-->
+<!--TODO: rethink the structure. where should the modal be placed? -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <course-profile [selectedCourse]="selectedCourse" >Nothing to display</course-profile>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 <body id="#">
 <div class="cardContainer">
@@ -6,7 +19,7 @@
     <div class="card-block">
       <h4 class="card-title">{{c.name}} {{c.number}}</h4>
       <p class="card-text">{{c.title}} <br>
-      <a href="#" class="btn btn-primary">View Profile</a>
+        <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="viewProfile(c);">View Profile</button>
     </div>
   </div>
 </div>

@@ -1,8 +1,9 @@
 /**
  * Created by Lenovo on 30-Dec-16.
  */
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {course} from '../../objects/course';
+import {CourseDetailProvider} from '../../services/course-detail-provider.service';
 
 @Component({
   moduleId: module.id,
@@ -10,15 +11,21 @@ import {course} from '../../objects/course';
   templateUrl: 'course-catalogue.component.html',
   styleUrls: ['course-catalogue.component.css']
 })
-export class courseCatalogue{
+export class courseCatalogue implements OnInit{
   courses: course[];
-  constructor(){
-    this.courses = [
-      {id:0,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Introduction to Programming", number: 200},
-      {id:1,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Computer Networks", number: 284},
-      {id:2,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Operating Systems", number: 272},
-      {id:3,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Advanced Algorithms and Data Structures", number: 256}
-    ]
+  selectedCourse: course;
+  constructor(private CourseDetailProvider:CourseDetailProvider){}
+  ngOnInit(): void {
+    this.getCourses();
+  }
+
+  getCourses(): void{
+    this.CourseDetailProvider.getCourses().then(c=> this.courses = c);
+  }
+
+
+  viewProfile(c: course){
+    this.selectedCourse = c;
   }
 
 }

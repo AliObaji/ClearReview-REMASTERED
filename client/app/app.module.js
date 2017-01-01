@@ -14,13 +14,16 @@ var app_routing_module_1 = require('./app-routing.module');
 var app_component_1 = require('./app.component');
 var course_catalogue_component_1 = require('./components/course-catalogue/course-catalogue.component');
 var professor_catalogue_component_1 = require('./components/professor-catalogue/professor-catalogue.component');
+var courseProfile_component_1 = require('./components/courseProfile/courseProfile.component');
+var course_detail_provider_service_1 = require('./services/course-detail-provider.service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_module_1.RoutingModule],
-            declarations: [app_component_1.HomeComponent, course_catalogue_component_1.courseCatalogue, professor_catalogue_component_1.professorCatalogue],
+            declarations: [app_component_1.HomeComponent, course_catalogue_component_1.courseCatalogue, professor_catalogue_component_1.professorCatalogue, courseProfile_component_1.courseProfile],
+            providers: [course_detail_provider_service_1.CourseDetailProvider],
             bootstrap: [app_component_1.HomeComponent]
         }), 
         __metadata('design:paramtypes', [])

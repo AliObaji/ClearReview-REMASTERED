@@ -26,6 +26,7 @@ export class courseCatalogue implements OnInit{
 
   viewProfile(c: course){
     this.selectedCourse = c;
+    console.log("we are getting the id in cat" + c);
   }
 
 }

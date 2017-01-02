@@ -10,10 +10,12 @@ import 'rxjs/Rx'
 
 @Injectable()
 export class CourseDetailProvider{
-  //
-  // getDetails():Promise<course>{
-  //
-  // }
+
+  getDetails(id: number):Promise<course>{
+    console.log("number in the service is" + id);
+    return this.getCourses()
+      .then(courses => courses.find(course => course.id === id));
+  }
 
   getCourses():Promise<course[]>{
     return Promise.resolve(Courses);

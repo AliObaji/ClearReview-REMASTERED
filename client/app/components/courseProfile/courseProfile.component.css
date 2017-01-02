@@ -1,0 +1,22 @@
+.header{
+  height: 12% !important;
+}
+.name{
+  margin:0 !important;
+}
+.main{
+  min-height:0 !important;
+}
+.cover{
+  margin-top: 5%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto !important;
+}
+.front{
+   height: 470px !important;
+ }
+.back{
+  height: 470px !important;
+}

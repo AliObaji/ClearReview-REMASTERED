@@ -1,20 +1,20 @@
-<div *ngIf="myCourse !== undefined">
+<div *ngIf="currentCourse !== undefined">
   <div class="container">
     <div [ngClass]="rotatingCardClasses">
       <div class="card">
         <!-- TODO:fix top border radius on the profile.. i dont know which div is causing this problem--->
         <div class="front">
           <div class="header">
-            <h5 class="motto">{{myCourse.name}} {{myCourse.number}}</h5>
+            <h5 class="motto">{{currentCourse.name}} {{currentCourse.number}}</h5>
           </div>
           <div class="content">
             <div class="main">
               <h3 class="name">
-                {{myCourse.title}}
+                {{currentCourse.title}}
               </h3>
             </div>
             <div class="cover">
-              <img src="{{myCourse.image}}"/>
+              <img src="{{currentCourse.image}}"/>
             </div>
           </div>
           <div class="footer">

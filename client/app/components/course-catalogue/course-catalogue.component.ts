@@ -22,6 +22,7 @@ export class courseCatalogue implements OnInit{
 
   // TODO:figure out a better way to subscribe, this works but is not recognizing it as a JSON
   getCourses(): void{
+    // this.CourseListProvider.test().subscribe(thing => console.log(thing.num));
     this.CourseListProvider.getCourses().subscribe(c => this.courses = c.courses);
   }
 

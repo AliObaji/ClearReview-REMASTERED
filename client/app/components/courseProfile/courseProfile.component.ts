@@ -1,7 +1,7 @@
 /**
  * Created by Lenovo on 01-Jan-17.
  */
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {course} from '../../objects/course';
 
 import {CourseDetailProvider} from '../../services/course-detail-provider.service';
@@ -13,17 +13,24 @@ import {CourseDetailProvider} from '../../services/course-detail-provider.servic
   styleUrls: ['courseProfile.component.css','rotating-card.css']
 
 })
-export class courseProfile{
+export class courseProfile implements OnChanges{
   @Input()
   myCourse: course;
 
   private rotatingCardClasses: any;
+  private currentCourse: course;
 
   constructor(private CourseDetailProvider:CourseDetailProvider){
-    console.log("we are getting the id in detail" + this.myCourse);
     this.rotatingCardClasses = {'card-container': true,'manual-flip': true, 'hover':false};
   }
+  //when the input changes, request the new course details.
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.myCourse.currentValue != undefined){
+      this.CourseDetailProvider.getDetail(this.myCourse.id).subscribe(details => this.currentCourse = details);
+    }
+  }
 
+  //used to change the class of the card element, in order to trigger the animation
   rotateCard(){
     if(this.rotatingCardClasses.hover == false){
       this.rotatingCardClasses.hover = true;

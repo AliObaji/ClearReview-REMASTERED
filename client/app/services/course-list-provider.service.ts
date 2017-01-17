@@ -2,7 +2,7 @@
  * Created by Lenovo on 17-Jan-17.
  */
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Http, Response, URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {course} from '../objects/course';
 
@@ -32,5 +32,4 @@ export class CourseListProvider{
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
-
 }

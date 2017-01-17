@@ -18,6 +18,7 @@ var professor_catalogue_component_1 = require('./components/professor-catalogue/
 var courseProfile_component_1 = require('./components/courseProfile/courseProfile.component');
 var course_detail_provider_service_1 = require('./services/course-detail-provider.service');
 var course_list_provider_service_1 = require('./services/course-list-provider.service');
+var professor_list_provider_service_1 = require('./services/professor-list-provider.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,7 +26,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_module_1.RoutingModule, http_1.HttpModule],
             declarations: [app_component_1.HomeComponent, course_catalogue_component_1.courseCatalogue, professor_catalogue_component_1.professorCatalogue, courseProfile_component_1.courseProfile],
-            providers: [course_detail_provider_service_1.CourseDetailProvider, course_list_provider_service_1.CourseListProvider],
+            providers: [course_detail_provider_service_1.CourseDetailProvider, course_list_provider_service_1.CourseListProvider, professor_list_provider_service_1.ProfessorListProvider],
             bootstrap: [app_component_1.HomeComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -2,12 +2,25 @@
  * Created by Lenovo on 30-Dec-16.
  */
 var express = require('express');
+var mongoose = require("mongoose");
 var http = require('http');
 var path = require('path');
 
-var app = express();
+var User = require("./models/course");
 
+var app = express();
+// mongoose.connect("mongodb://localhost:27017/test");
 app.use(express.static(path.join(__dirname, "../client")));
+
+// app.get("/",function(req,res,next){
+//     User.insert({
+//         "name": "CMPS",
+//         "number": 200,
+//         "title": "Introduction to Programming",
+//         "image": "../app/assets/Images/defCardImage.png"
+//     });
+//     next();
+// });
 
 
 //TODO: when the database is constructed, retrieve those using queries.

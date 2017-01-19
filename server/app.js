@@ -6,14 +6,14 @@ var mongoose = require("mongoose");
 var http = require('http');
 var path = require('path');
 
-var User = require("./models/course");
+var CourseColl = require("./models/course");
 
 var app = express();
-// mongoose.connect("mongodb://localhost:27017/test");
+mongoose.connect("mongodb://localhost:27017/Elissa");
 app.use(express.static(path.join(__dirname, "../client")));
 
 // app.get("/",function(req,res,next){
-//     User.insert({
+//     CourseColl.insert({
 //         "name": "CMPS",
 //         "number": 200,
 //         "title": "Introduction to Programming",

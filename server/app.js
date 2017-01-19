@@ -10,16 +10,22 @@ var CourseColl = require("./models/course");
 
 var app = express();
 mongoose.connect("mongodb://localhost:27017/Elissa");
-app.use(express.static(path.join(__dirname, "../client")));
+var db = mongoose.connection;
 
-// app.get("/",function(req,res,next){
+app.use(express.static(path.join(__dirname, "../client")));
+// app.use(function(req,res,next){
+//     console.log("Hi");
+//     next();
+// });
+
+// app.use("/",function(req,res,next){
 //     CourseColl.insert({
 //         "name": "CMPS",
 //         "number": 200,
 //         "title": "Introduction to Programming",
 //         "image": "../app/assets/Images/defCardImage.png"
 //     });
-//     next();
+//     // next();
 // });
 
 
@@ -40,6 +46,16 @@ var professors = {professors:[
 
 //returns a mock collection of courses
 app.get("/courseList", function (req, res) {
+    // var c = new CourseColl({
+    //     "name": "CMPS",
+    //     "number": 200,
+    //     "title": "Introduction to Programming",
+    //     "image": "../app/assets/Images/defCardImage.png"
+    // });
+    // CourseColl.insert({
+    //
+    // });
+    // console.log(db.collection('users').find());
     res.json(courses);
 });
 

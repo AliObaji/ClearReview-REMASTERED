@@ -10,9 +10,9 @@ var courseSchema = mongoose.Schema({
     image:{type:String, required:true}
 });
 
-// courseSchema.methods.id = function () {
-//     return this.id;
-// };
+courseSchema.methods.speak = function(){
+    console.log(this.name + " " + this.number);
+};
 
 var Course = mongoose.model("Course",courseSchema);
 module.exports = Course;

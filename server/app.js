@@ -7,6 +7,7 @@ var http = require('http');
 var path = require('path');
 
 var CourseColl = require("./models/course");
+var profColl = require("./models/professor");
 
 var app = express();
 mongoose.connect("mongodb://localhost:27017/Elissa");
@@ -21,23 +22,7 @@ app.use(function(req,res,next){
     next();
 });
 
-
-//TODO: when the database is constructed, retrieve those using queries.
-// var courses = {courses:[
-//     {id:0,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Introduction to Programming", number: 200},
-//     {id:1,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Computer Networks", number: 284},
-//     {id:2,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Operating Systems", number: 272},
-//     {id:3,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Advanced Algorithms and Data Structures", number: 256}
-//     ]};
-
-var professors = {professors:[
-    {id:0,firstname: "Fatema", lastname: "Abu Salem", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"},
-    {id:1,firstname: "Mohammed", lastname: "Jaber", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"},
-    {id:2,firstname: "Ahmad", lastname: "Dhaini", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"},
-    {id:3,firstname: "Wassim", lastname: "El-Hajj", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}
-]};
-
-//returns a mock collection of courses
+//returns course list
 app.get("/courseList", function (req, res) {
 
     // var cs = [
@@ -69,9 +54,31 @@ app.get("/courseList", function (req, res) {
 
 });
 
-//returns a mock collection of professors
+//returns professor list
 app.get("/profList",function (req, res) {
-   res.json(professors);
+    // var pc = [
+    //     new profColl({id:0,firstname: "Fatema", lastname: "Abu Salem", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}),
+    //     new profColl({id:1,firstname: "Mohammed", lastname: "Jaber", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}),
+    //     new profColl({id:2,firstname: "Ahmad", lastname: "Dhaini", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}),
+    //     new profColl({id:3,firstname: "Wassim", lastname: "El-Hajj", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"})
+    // ];
+    // for(var i =0; i<pc.length;i++){
+    //     pc[i].save();
+    // }
+
+    // profColl.remove({},function(err,p){
+    //    if (err){console.log(err);}
+    // });
+    profColl.find(function(err,profs){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json({
+                professors: profs
+            });
+        }
+    });
 });
 
 //function to find a certain course.

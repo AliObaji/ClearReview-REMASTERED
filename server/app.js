@@ -83,12 +83,15 @@ app.get("/profList",function (req, res) {
 
 //function to find a certain course.
 app.get('/courseDetails',function (req, res) {
-    var arrayFound = courses.courses.filter(function(courses) {
-        return courses.id == req.query.id;
+
+    CourseColl.findById(req.query.id,function(err,myDoc){
+       if (err){
+           console.log(err);
+       }
+       else{
+           res.json(myDoc);
+       }
     });
-    res.json(
-        arrayFound[0]
-    );
 });
 
 http.createServer(app).listen(3000, function (req, res) {

@@ -18,18 +18,9 @@ import 'rxjs/add/operator/map';
 export class CourseDetailProvider{
   constructor(private http:Http ){}
 
-  getDetails(id: number):Promise<course>{
-    return this.getCourses()
-      .then(courses => courses.find(course => course.id === id));
-  }
-
-  getCourses():Promise<course[]>{
-    return Promise.resolve(Courses);
-  }
-
-  getDetail(id:number):Observable<course>{
+  getDetail(id:string):Observable<course>{
     let params: URLSearchParams = new URLSearchParams();
-    params.set("id",""+id);
+    params.set("id",id);
     return this.http.get('/courseDetails',{
       search: params
     })

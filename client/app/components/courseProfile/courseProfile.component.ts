@@ -26,7 +26,8 @@ export class courseProfile implements OnChanges{
   //when the input changes, request the new course details.
   ngOnChanges(changes: SimpleChanges) {
     if(changes.myCourse.currentValue != undefined){
-      this.CourseDetailProvider.getDetail(this.myCourse.id).subscribe(details => this.currentCourse = details);
+      console.log(this.myCourse._id);
+      this.CourseDetailProvider.getDetail(this.myCourse._id).subscribe(details => this.currentCourse = details);
     }
   }
 

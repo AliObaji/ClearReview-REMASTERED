@@ -16,6 +16,22 @@
   </div>
 </nav>
 <!--Small description in the body -->
+
+<!-- Example split danger button -->
+<div class="btn-group userBox">
+  <button type="button" class="btn btn-secondary mainbtn">Ama159</button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Profile</a>
+    <a class="dropdown-item" href="#">Courses</a>
+    <a class="dropdown-item" href="#">Reviews</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Log off</a>
+  </div>
+</div>
+
 <div class="jumbotron text-xs-center">
   <div class="container">
     <h1 class="jumbotron-heading">{{name}}</h1>
@@ -26,6 +42,7 @@
     </div>
   </div>
 </div>
+
 <!-- TODO: make the text in the router-outlet disappear after routing -->
 <router-outlet>
   <h2 class = "selectorText" align="center">Select Courses or Professors to begin</h2>

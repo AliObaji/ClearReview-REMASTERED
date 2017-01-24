@@ -24,3 +24,16 @@
 .logo{
   width:10%;
 }
+
+.userBox{
+  width:15%;
+  float: right;
+  margin-top: 1%;
+  margin-right: 1%;
+}
+.mainbtn{
+  width: 75%;
+}
+.dropdown-menu{
+  width:92%;
+}

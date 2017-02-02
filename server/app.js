@@ -15,7 +15,7 @@ var db = mongoose.connection;
 db.once('open', function() {
     console.log("Connection to Elissa established.");
 });
-app.use(express.static(path.join(__dirname, "../client")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 // Make our db accessible to our router
 app.use(function(req,res,next){
     req.db = db;

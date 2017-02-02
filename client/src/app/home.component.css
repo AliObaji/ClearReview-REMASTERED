@@ -1,0 +1,47 @@
+/*TODO: make all text sizes scalable. (in %)*/
+
+.navbar{
+  border-radius:0;
+}
+.searchbar{
+  width: 70%;
+  margin-right: 10%;
+  margin-top: 0.5%;
+}
+.selectorText{
+  display: block;
+  magrin-left: auto;
+  margin-right: auto;
+}
+
+.container{
+  width:50%;
+}
+.form-control{
+  width: 80%;
+}
+
+.logo{
+  width:10%;
+}
+
+.userBox{
+  width:15%;
+  float: right;
+  margin-top: 1%;
+  margin-right: 1%;
+}
+.mainbtn{
+  width: 75%;
+}
+.dropdown-menu{
+  width:92%;
+}
+
+
+.typeahead-input,
+.typeahead-typeahead{
+  width: 250px;
+  padding: 8px;
+  border-radius: 5px;
+}

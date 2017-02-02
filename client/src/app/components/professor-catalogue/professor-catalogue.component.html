@@ -1,0 +1,29 @@
+
+<body id="#">
+<div class="cardContainer">
+  <div class="card" *ngFor="let p of professors">
+    <img class="card-img-top cardImage" [src]=p.image alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{p.firstname}} {{p.lastname}}</h4>
+      <p class="card-text">{{p.department}} <br>
+      <a href="#" class="btn btn-primary">View Profile</a>
+        <button type="button" class="btn btn-success">Review</button>
+    </div>
+  </div>
+</div>
+<!--TODO: make footer a separate component.-->
+<!-- TODO: 'Back to top' button takes me to the dashboard.. fix that. -->
+<div class="footer">
+  <div class="container">
+    <p class = "float-xs-right">
+      <a href="#">Back to Top</a>
+    </p>
+    <p>
+      Inspired by Bootstrap.
+    </p>
+    <p>
+      Built with NodeJS,Express, Angular 2.
+    </p>
+  </div>
+</div>
+

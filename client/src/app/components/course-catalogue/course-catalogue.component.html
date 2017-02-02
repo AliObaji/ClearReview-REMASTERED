@@ -1,0 +1,43 @@
+<!--Modal-->
+<!--TODO: rethink the structure. where should the modal be placed? -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <course-profile [myCourse]="selectedCourse">Nothing to display</course-profile>
+    </div>
+  </div>
+</div>
+
+
+<body id="#">
+<div class="cardContainer">
+  <div class="card" *ngFor="let c of courses">
+    <img class="card-img-top cardImage" [src]=c.image alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{c.name}} {{c.number}}</h4>
+      <p class="card-text">{{c.title}} <br>
+        <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                (click)="viewProfile(c);">View Profile
+        </button>
+        <button type="button" class="btn btn-success">Review</button>
+    </div>
+  </div>
+</div>
+<!--TODO: make footer a separate component.-->
+<!-- TODO: 'Back to top' button takes me to the dashboard.. fix that. -->
+<div class="footer">
+  <div class="container">
+    <p class="float-xs-right">
+      <a href="#">Back to Top</a>
+    </p>
+    <p>
+      Inspired by Bootstrap.
+    </p>
+    <p>
+      Built with NodeJS,Express, Angular 2.
+    </p>
+  </div>
+</div>
+
+

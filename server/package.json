@@ -4,10 +4,11 @@
   "author": "Ali Obaji",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "cd ../myapp && ng build && cd ../server && nodemon app.js"
   },
   "dependencies": {
     "express": "^4.14.0",
-    "mongoose": "^4.7.7"
+    "mongoose": "^4.7.7",
+    "ng2-page-scroll": "^4.0.0-beta.3"
   }
 }

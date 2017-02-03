@@ -15,21 +15,27 @@ var db = mongoose.connection;
 db.once('open', function() {
     console.log("Connection to Elissa established.");
 });
+// view engine setup
+app.set('views', path.join(__dirname, '../client/dist'));
+app.set('view engine', 'ejs');
+
+app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 // Make our db accessible to our router
-app.use(function(req,res,next){
-    req.db = db;
-    next();
+
+app.get("/test",function(req,res){
+    console.log("hi");
 });
+//TODO: fix issue where I would have multiple results when i search. For course and professor profiles..
 
 //returns course list
 app.get("/courseList", function (req, res) {
 
     // var cs = [
-    //         new CourseColl({id:1,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Computer Networks", number: 284}),
-    //     new CourseColl({id:0,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Introduction to Programming", number: 200}),
-    //     new CourseColl({id:2,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Operating Systems", number: 272}),
-    //     new CourseColl({id:3,image:  "../app/assets/Images/defCardImage.png", name: "CMPS", title: "Advanced Algorithms and Data Structures", number: 256})
+    //         new CourseColl({id:1,image:  "../../../assets/images/defCardImage.png", name: "CMPS", title: "Computer Networks", number: 284}),
+    //     new CourseColl({id:0,image:  "../../../assets/images/defCardImage.png", name: "CMPS", title: "Introduction to Programming", number: 200}),
+    //     new CourseColl({id:2,image:  "../../../assets/images/defCardImage.png", name: "CMPS", title: "Operating Systems", number: 272}),
+    //     new CourseColl({id:3,image:  "../../../assets/images/defCardImage.png", name: "CMPS", title: "Advanced Algorithms and Data Structures", number: 256})
     // ];
     //
     // for(var i =0; i<cs.length;i++){
@@ -41,6 +47,7 @@ app.get("/courseList", function (req, res) {
     // });
 
     CourseColl.find(function(err,courses){
+
        if(err){
            console.log(err);
        }
@@ -54,13 +61,15 @@ app.get("/courseList", function (req, res) {
 
 });
 
+
+
 //returns professor list
 app.get("/profList",function (req, res) {
     // var pc = [
-    //     new profColl({id:0,firstname: "Fatema", lastname: "Abu Salem", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}),
-    //     new profColl({id:1,firstname: "Mohammed", lastname: "Jaber", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}),
-    //     new profColl({id:2,firstname: "Ahmad", lastname: "Dhaini", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"}),
-    //     new profColl({id:3,firstname: "Wassim", lastname: "El-Hajj", department: "Computer Science", image: "../app/assets/Images/defCardImage.png"})
+    //     new profColl({id:0,firstname: "Fatema", lastname: "Abu Salem", department: "Computer Science", image: "../../../assets/images/defCardImage.png"}),
+    //     new profColl({id:1,firstname: "Mohammed", lastname: "Jaber", department: "Computer Science", image: "../../../assets/images/defCardImage.png"}),
+    //     new profColl({id:2,firstname: "Ahmad", lastname: "Dhaini", department: "Computer Science", image: "../../../assets/images/defCardImage.png"}),
+    //     new profColl({id:3,firstname: "Wassim", lastname: "El-Hajj", department: "Computer Science", image: "../../../assets/images/defCardImage.png"})
     // ];
     // for(var i =0; i<pc.length;i++){
     //     pc[i].save();
@@ -69,6 +78,7 @@ app.get("/profList",function (req, res) {
     // profColl.remove({},function(err,p){
     //    if (err){console.log(err);}
     // });
+
     profColl.find(function(err,profs){
         if(err){
             console.log(err);

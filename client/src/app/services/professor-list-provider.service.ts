@@ -24,13 +24,10 @@ export class ProfessorListProvider{
   }
 
 
-  private p:p;
   getProfs():Observable<p>{
-    this.p.professors= this.http.get('/profList')
+    return this.http.get('/profList')
       .map(this.extractData)
       .catch(this.handleError);
-
-    return this.p.professors;
   }
 
   private extractData(res:Response){

@@ -1,3 +1,4 @@
+<body *ngIf="courses && courses.length > 0">
 <typeahead
   [(ngModel)]="selectedSCourse"
   [list]="courses"
@@ -8,3 +9,4 @@
 </typeahead>
 
 <p>You selected {{ courseName }}</p>
+</body>

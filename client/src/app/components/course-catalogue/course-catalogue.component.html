@@ -9,19 +9,9 @@
   </div>
 </div>
 
-
 <body id="#" *ngIf="courses && courses.length > 0">
-<typeahead
-  [(ngModel)]="selectedSCourse"
-  [list]="courses"
-  [searchProperty]="'title'" [displayProperty]="'title'"
-  [maxSuggestions]="2"
-  (suggestionSelected)="courseSSelected($event)"
-  placeholder="Begin typing a course title">
-</typeahead>
 
-<p>You selected {{ courseName }}</p>
-
+<search-bar></search-bar>
 
 <div class="cardContainer">
   <div class="card" *ngFor="let c of courses">
@@ -51,5 +41,3 @@
     </p>
   </div>
 </div>
-
-

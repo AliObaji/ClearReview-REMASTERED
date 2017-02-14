@@ -14,6 +14,7 @@ import { HomeComponent }  from './app.component';
 import { courseCatalogue } from './components/course-catalogue/course-catalogue.component';
 import { professorCatalogue } from './components/professor-catalogue/professor-catalogue.component';
 import { courseProfile } from './components/courseProfile/courseProfile.component';
+import { searchBar } from './components/search-bar/search-bar.component';
 
 
 //providers and services
@@ -28,6 +29,7 @@ import { ProfessorListProvider } from './services/professor-list-provider.servic
     courseCatalogue,
     professorCatalogue,
     courseProfile,
+    searchBar,
     Typeahead
   ],
   imports: [

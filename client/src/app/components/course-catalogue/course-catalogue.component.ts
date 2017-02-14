@@ -13,8 +13,22 @@ import {CourseListProvider} from '../../services/course-list-provider.service';
   styleUrls: ['course-catalogue.component.css']
 })
 export class courseCatalogue implements OnInit{
-  courses: course[];
+  courses: Array<course>;
   selectedCourse: course;
+
+
+
+  courseName: string;
+  selectedSCourse: any;
+
+  //course search selected
+  public courseSSelected(course) {
+    this.courseName = course ? course.title : 'none';
+  }
+
+
+
+
   constructor(private CourseDetailProvider:CourseDetailProvider, private CourseListProvider:CourseListProvider){}
   ngOnInit(): void {
     this.getCourses();
@@ -22,7 +36,14 @@ export class courseCatalogue implements OnInit{
 
   // TODO:figure out a better way to subscribe, this works but is not recognizing it as a JSON
   getCourses(): void{
-    this.CourseListProvider.getCourses().subscribe(c => this.courses = c.courses);
+    this.CourseListProvider.getCourses().subscribe(c => {
+      this.courses = c.courses;
+      this.selectedSCourse = this.courses[0];
+
+      // c['courses'].map((d, i) => this.courses[i] = d);
+
+      console.log(this.courses);
+    });
   }
 
 

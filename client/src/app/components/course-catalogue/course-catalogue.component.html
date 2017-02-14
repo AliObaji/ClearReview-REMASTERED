@@ -10,7 +10,19 @@
 </div>
 
 
-<body id="#">
+<body id="#" *ngIf="courses && courses.length > 0">
+<typeahead
+  [(ngModel)]="selectedSCourse"
+  [list]="courses"
+  [searchProperty]="'title'" [displayProperty]="'title'"
+  [maxSuggestions]="2"
+  (suggestionSelected)="courseSSelected($event)"
+  placeholder="Begin typing a course title">
+</typeahead>
+
+<p>You selected {{ courseName }}</p>
+
+
 <div class="cardContainer">
   <div class="card" *ngFor="let c of courses">
     <img class="card-img-top cardImage" [src]=c.image alt="Card image cap">

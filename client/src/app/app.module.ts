@@ -3,13 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import {FormsModule} from "@angular/forms";
 
+//routing modules
 import { RoutingModule } from './app-routing.module';
 
+//third party libraries.
+import { Typeahead } from 'ng2-typeahead';
+
+//components
 import { HomeComponent }  from './app.component';
 import { courseCatalogue } from './components/course-catalogue/course-catalogue.component';
 import { professorCatalogue } from './components/professor-catalogue/professor-catalogue.component';
 import { courseProfile } from './components/courseProfile/courseProfile.component';
 
+
+//providers and services
 import { CourseDetailProvider } from './services/course-detail-provider.service';
 import { CourseListProvider } from './services/course-list-provider.service';
 import { ProfessorListProvider } from './services/professor-list-provider.service';
@@ -20,7 +27,8 @@ import { ProfessorListProvider } from './services/professor-list-provider.servic
     HomeComponent,
     courseCatalogue,
     professorCatalogue,
-    courseProfile
+    courseProfile,
+    Typeahead
   ],
   imports: [
     BrowserModule,

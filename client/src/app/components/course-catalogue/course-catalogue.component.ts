@@ -46,8 +46,9 @@ export class courseCatalogue implements OnInit{
     });
   }
 
+
+  //test for local storage
   getpromises(){
-    console.log("hi");
     this.CourseListProvider.getAllCourses().then(c => console.log(c));
   }
 

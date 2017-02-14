@@ -1,7 +1,7 @@
 /**
  * Created by Lenovo on 01-Jan-17.
  */
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {course} from '../../objects/course';
 
 import {CourseDetailProvider} from '../../services/course-detail-provider.service';

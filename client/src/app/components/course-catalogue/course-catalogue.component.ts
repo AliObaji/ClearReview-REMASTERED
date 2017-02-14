@@ -37,18 +37,23 @@ export class courseCatalogue implements OnInit{
   // TODO:figure out a better way to subscribe, this works but is not recognizing it as a JSON
   getCourses(): void{
     this.CourseListProvider.getCourses().subscribe(c => {
+      console.log("this is in the component");
+      console.log(c);
+
       this.courses = c.courses;
       this.selectedSCourse = this.courses[0];
 
-      // c['courses'].map((d, i) => this.courses[i] = d);
-
-      console.log(this.courses);
     });
+  }
+
+  getpromises(){
+    console.log("hi");
+    this.CourseListProvider.getAllCourses().then(c => console.log(c));
   }
 
 
   viewProfile(c: course){
     this.selectedCourse = c;
-    console.log("we are getting the id in cat" + c);
+    // console.log("we are getting the id in cat" + c);
   }
 }

@@ -1,0 +1,10 @@
+<typeahead
+  [(ngModel)]="selectedSCourse"
+  [list]="courses"
+  [searchProperty]="'title'" [displayProperty]="'title'"
+  [maxSuggestions]="2"
+  (suggestionSelected)="courseSSelected($event)"
+  placeholder="Begin typing a course title">
+</typeahead>
+
+<p>You selected {{ courseName }}</p>

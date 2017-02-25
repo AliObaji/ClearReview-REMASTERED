@@ -1,0 +1,11 @@
+.searchbar{
+  width: 70%;
+  margin-right: 10%;
+  margin-top: 0.5%;
+}
+.typeahead-input,
+.typeahead-typeahead{
+  width: 250px;
+  padding: 8px;
+  border-radius: 5px !important;
+}

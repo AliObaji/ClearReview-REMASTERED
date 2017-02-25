@@ -24,15 +24,10 @@ export class courseCatalogue implements OnInit{
   getCourses(): void{
     this.CourseListProvider.getCourses().subscribe(c => {
       this.courses = c.courses;
-      console.log(this.courses);
     });
   }
 
-  //test for local storage
-  getpromises(){
-    this.CourseListProvider.getAllCourses().then(c => console.log(c));
-  }
-
+  //whenever a card is clicked, changed the selected course in order to retrieve the course details.
   viewProfile(c: course){
     this.selectedCourse = c;
   }

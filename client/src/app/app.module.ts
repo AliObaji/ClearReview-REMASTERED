@@ -7,7 +7,7 @@ import {FormsModule} from "@angular/forms";
 import { RoutingModule } from './app-routing.module';
 
 //third party libraries.
-import { Typeahead } from 'ng2-typeahead';
+import { Typeahead } from './components/search-bar/ng2-typeahead';
 
 //components
 import { HomeComponent }  from './app.component';

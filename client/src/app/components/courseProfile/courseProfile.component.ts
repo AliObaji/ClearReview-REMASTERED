@@ -5,7 +5,6 @@ import {Component, Input, OnChanges} from '@angular/core';
 import {course} from '../../objects/course';
 
 import {CourseDetailProvider} from '../../services/course-detail-provider.service';
-import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'course-profile',
@@ -21,12 +20,8 @@ export class courseProfile implements OnChanges{
   private rotatingCardClasses: any;
   private currentCourse: course;
 
-
-  private currentCourseSubject = new BehaviorSubject<course>(this.myCourse);
-
   constructor(private CourseDetailProvider:CourseDetailProvider){
     this.rotatingCardClasses = {'card-container': true,'manual-flip': true, 'hover':false};
-    this.currentCourseSubject.subscribe((val)=> console.log(val));
   }
   //when the input changes, request the new course details.
   ngOnChanges(changes: any) {

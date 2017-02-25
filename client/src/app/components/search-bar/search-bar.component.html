@@ -1,11 +1,13 @@
-<body *ngIf="courses && courses.length > 0">
+<body *ngIf="courses && courses.length > 0" [ngStyle]="{'width':'50%','margin-left':'auto','margin-right':'auto'}">
 <typeahead
   [(ngModel)]="selectedSCourse"
   [list]="courses"
   [searchProperty]="'title'" [displayProperty]="'title'"
   [maxSuggestions]="2"
   (suggestionSelected)="courseSSelected($event)"
-  placeholder="Begin typing a course title">
+  placeholder="Begin typing a course title"
+  class="searchbar"
+>
 </typeahead>
 
 <p>You selected {{ courseName }}</p>

@@ -63,6 +63,10 @@ export const TYPEAHEAD_CONTROL_VALUE_ACCESSOR:any = {
     }
 
     .typeahead-input {
+      color: #008fca;
+      height: 100%;
+      padding-left: 1%;
+      width: 100%;
       border-color: transparent;
       position: absolute;
       z-index: 10;
@@ -73,12 +77,19 @@ export const TYPEAHEAD_CONTROL_VALUE_ACCESSOR:any = {
     }
 
     .typeahead-input-has-selection {
-      background-color: #f5f5f5;
-      border: 1px solid #4c4845;
+      width: 100%;
+      border-radius: .25rem;
+      background-color: #ffffff;
+      border: 1px solid #c0c0ff;
       color: #008fca;
     }
 
     .typeahead-typeahead {
+      padding-left: 1%;
+      height: 100%;
+      border-radius: .25rem;
+      border-style: groove;
+      width: 100%;
       color: rgb(128, 128, 128);
       position: absolute;
       z-index: 5;
@@ -87,10 +98,11 @@ export const TYPEAHEAD_CONTROL_VALUE_ACCESSOR:any = {
     }
 
     .typeahead-suggestions {
+      width: 100%;
       position: absolute;
       top: 42px;
       overflow-y: auto;
-      color: #666666;
+      color: #008fca;
       border-radius: 3px;
       padding: 0;
       background-color: #f5f5f5;
@@ -101,18 +113,21 @@ export const TYPEAHEAD_CONTROL_VALUE_ACCESSOR:any = {
     }
 
     .typeahead-suggestions ul {
+      width:100%
       list-style-type: none;
       padding-left: 0;
       margin-top: 3px;
     }
 
     .typeahead-suggestions ul li {
+      width: 100%;
       padding: 6px !important;
       font-size: 0.9em;
       border-bottom: 1px solid #e0e0e0;
     }
 
     .typeahead-suggestion-active {
+      width: 100%;
       background-color: #008fca;
       color: #ffffff;
     }

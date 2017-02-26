@@ -16,6 +16,8 @@ import { professorCatalogue } from './components/professor-catalogue/professor-c
 import { courseProfile } from './components/courseProfile/courseProfile.component';
 import { searchBar } from './components/search-bar/search-bar.component';
 
+import { BarChart } from './components/charts/BarChart/barchart.component';
+
 
 //providers and services
 import { CourseDetailProvider } from './services/course-detail-provider.service';
@@ -29,6 +31,7 @@ import { ProfessorListProvider } from './services/professor-list-provider.servic
     courseCatalogue,
     professorCatalogue,
     courseProfile,
+    BarChart,
     searchBar,
     Typeahead
   ],

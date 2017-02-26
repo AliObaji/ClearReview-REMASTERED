@@ -30,7 +30,7 @@ export class courseProfile implements OnChanges{
     }
   }
 
-  //used to change the class of the card element, in order to trigger the animation
+  //used to change the class of the card element, in order to trigger the flip animation
   rotateCard(){
     if(this.rotatingCardClasses.hover == false){
       this.rotatingCardClasses.hover = true;

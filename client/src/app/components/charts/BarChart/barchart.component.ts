@@ -16,21 +16,23 @@ import * as d3 from 'd3';
 export class BarChart implements OnInit, OnChanges{
   @ViewChild('chart') private chartContainer: ElementRef;
   private data: any [][];
+  private data1: any [];
   private chart: any;
-  private margin: any = {top: 40, right: 20, bottom: 30, left: 40};
-  private width: number;
-  private height: number;
-  private xScale: any;
-  private yScale: any;
-  private colors: any;
-  private xAxis: any;
-  private yAxis: any;
+
+  private width: any = 420;
+  private barHeight: any = 20;
+  private bar: any;
+  private x: any;
+
+  private toolTip: any;
 
   constructor(){
     this.data = [
       [1,2],
       [5,4]
     ];
+
+    this.data1 = [4, 8, 15, 16, 23, 42];
   }
 
 
@@ -58,78 +60,60 @@ export class BarChart implements OnInit, OnChanges{
   }
 
   private createChart(){
+    this.x = d3.scaleLinear()
+      .domain([0,d3.max(this.data1)])
+      .range([0,this.width]);
 
-    let element = this.chartContainer.nativeElement;
-    this.width = element.offsetWidth - this.margin.left - this.margin.right;
-    this.height = element.offsetHeight - this.margin.top - this.margin.bottom;
-    let svg = d3.select(element).append('svg')
-      .attr('width', this.width)
-      .attr('height', this.height);
+    this.chart = d3.select(".chart")
+      .attr("width", this.width)
+      .attr("height", this.barHeight * this.data1.length);
 
-    //chart plot area
-    this.chart = svg.append('g')
-      .attr('class', 'bars')
-      .attr('transform', `translate(${this.margin.left},${this.margin.top})`);
+    this.toolTip = d3.select("body").append("div")
+      .attr("class","tooltip")
+      .style("opacity",0);
 
-    // define X & Y domains
-    let xDomain = this.data.map(d => d[0]);
-    let yDomain = [0, d3.max(this.data, d => d[1])];
+    this.bar = this.chart.selectAll("g")
+      .data(this.data1)
+      .enter().append("g")
+      .attr("transform",((d,i) =>{
+        return "translate(0," + i*this.barHeight + ")";
+      }));
 
-    //create scales
-    this.xScale = d3.scaleBand().padding(0.1).domain(xDomain).rangeRound([0,this.width]);
-    this.yScale = d3.scaleLinear().domain(yDomain).range([this.height, 0]);
+    this.bar.append("rect")
+      .attr("width",this.x)
+      .attr("height",this.barHeight - 1);
 
-    // bar colors
-    this.colors = d3.scaleLinear().domain([0, this.data.length]).range(<any[]>['red', 'blue']);
+    this.bar.append("text")
+      .attr("x", (d =>{
+        return this.x(d) - 3;
+      }))
+      .attr("y", this.barHeight/2)
+      .attr("dy",".35em")
+      .text((d => {
+        return d;
+      }));
 
-    // x & y axis
-    this.xAxis = svg.append('g')
-      .attr('class', 'axis axis-x')
-      .attr('transform', `translate(${this.margin.left}, ${this.margin.top + this.height})`)
-      .call(d3.axisBottom(this.xScale));
-    this.yAxis = svg.append('g')
-      .attr('class', 'axis axis-y')
-      .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`)
-      .call(d3.axisLeft(this.yScale));
+    this.chart.selectAll("rect")
+      .on("mouseover",(d =>{
+        this.toolTip
+          .transition()
+          .duration(200)
+          .style("opacity","0.9")
+          .style("left",(d3.event.pageX) + "px")
+          .style("top",(d3.event.pageY - 28) + "px");
+        this.toolTip.html("value: " + d);
+      }))
+      .on("mouseout",(d => {
+        this.toolTip
+          .transition()
+          .duration(500)
+          .style("opacity","0.0")
+      }));
+
 
   }
 
   updateChart() {
-    // update scales & axis
-    this.xScale.domain(this.data.map(d => d[0]));
-    this.yScale.domain([0, d3.max(this.data, d => d[1])]);
-    this.colors.domain([0, this.data.length]);
-    this.xAxis.transition().call(d3.axisBottom(this.xScale));
-    this.yAxis.transition().call(d3.axisLeft(this.yScale));
 
-    let update = this.chart.selectAll('.bar')
-      .data(this.data);
-
-    // remove exiting bars
-    update.exit().remove();
-
-    // update existing bars
-    this.chart.selectAll('.bar').transition()
-      .attr('x', d => this.xScale(d[0]))
-      .attr('y', d => this.yScale(d[1]))
-      .attr('width', d => this.xScale.bandwidth())
-      .attr('height', d => this.height - this.yScale(d[1]))
-      .style('fill', (d, i) => this.colors(i));
-
-    // add new bars
-    update
-      .enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('x', d => this.xScale(d[0]))
-      .attr('y', d => this.yScale(0))
-      .attr('width', this.xScale.bandwidth())
-      .attr('height', 0)
-      .style('fill', (d, i) => this.colors(i))
-      .transition()
-      .delay((d, i) => i * 10)
-      .attr('y', d => this.yScale(d[1]))
-      .attr('height', d => this.height - this.yScale(d[1]));
   }
-
 }
